@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using DoubleArray;
+
+int[,] AOPP = DoubleArrayDouble.MirrorArray();
+DoubleArrayDouble.Write(AOPP);
+
