@@ -6,73 +6,79 @@ using System.Threading.Tasks;
 
 namespace DoubleArray
 {
-    internal class DoubleArrayDouble
+    public static class DoubleArrayDouble
     {
-        public static int FindTheMinimumElementOfAnArray()
+        public static int FindTheMinimumElementOfAnArray(int [,] result)
         {
-            int[,] result = new int[,] { { 1, 5 }, { 5, 9 }, { 1, 9 } };
+            
             int minValue = result[0,0];
-            for (int i = 1; i < result.Length; i++)
+            for (int i = 0; i < result.GetLength(0); i++)
             {
-
-                if (result[i,i] < minValue)
+                for (int j = 0; j < result.GetLength(1); j++)
                 {
-                    minValue = result[i,i];
+                    if (result[i, j] < minValue)
+                    {
+                        minValue = result[i, j];
+                    }
                 }
             }
             return minValue;
         }
-        public static int FindTheMaximumElementOfAnArray()
+        public static int FindTheMaximumElementOfAnArray(int[,] result)
         {
-            int[,] result = new int[,] { { 1, 5 }, { 5, 9 }};
+            
             int maxValue = result[0,0];
 
-            for (int i = 1; i < result.Length; i++)
+            for (int i = 0; i < result.GetLength(0); i++)
             {
-
-                if (result[i,i] > maxValue)
+                for (int j = 0; j < result.GetLength(1); j++)
                 {
-                    maxValue = result[i,i];
+
+                    if (result[i, j] > maxValue)
+                    {
+                        maxValue = result[i, j];
+                    }
                 }
             }
             return maxValue;
         }
-        public static int FindTheIndexOfTheMinimumElementOfAnArray()
+        public static int FindTheIndexOfTheMinimumElementOfAnArray(int[,] array)
         {
-            int[,] array = new int[,] { { 100, 10}, { 2, 8} };
+          
             int minValue = array[0,0];
             int index = 0;
 
-            for (int i = 1; i < array.Length; i++)
-            {
-                if (array[i,i] < minValue)
-                {
-                    array[i,i] = minValue;
-                    index = i;
-                }
+            for (int i = 0; i < array.GetLength(0); i++)
 
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] < minValue)
+                    {
+                        array[i, j] = minValue;
+                        index = i;
+                    }
+                }
             }
             return index;
         }
-        public static int FindIndexOfMaximumArrayElement()
-        {
-            int[,] array =new int [,]{{ 100, 800, 105, 865, 205 },{ 100, 800, 105, 865, 205 } };
+        public static int FindIndexOfMaximumArrayElement(int[,] array)
+        {           
             int maxValue = array[0,0];
             int result = 0;
-            for (int i = 1; i < array.Length; i++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                if (array[i,i] > maxValue)
+                for (int j = 0; j < array.GetLength(1); j++)
+                    if (array[i,j] > maxValue)
                 {
-                    maxValue = array[i,i];
+                    maxValue = array[i,j];
                     result = i;
                 }
             }
             return result;
         }
-        public static int FindOfElements()
+        public static int FindOfElements(int[,] array)
         {
-            int[,] array = new int[,] { { 100, 800, 105, 865, 205 }, { 100, 800, 105, 865, 205 } };
-
             int count = 0;
 
             for (int i=0; i<array.GetLength(0); i++)
@@ -92,27 +98,24 @@ namespace DoubleArray
             }
             return count;
         }
-        public static int[,] MirrorArray()
-        {
-            int[,] array = new int[,] { { 100, 800, 105, 865, 205 }, { 100, 800, 105, 865, 205 } };
-            
-
+        public static int[,] MirrorArray(int[,] array)
+        {                    
             for (int i=0;i<array.GetLength(0); i++)
             {
-                for (int j=i+1; i<array.GetLength(1);j++)
+                for (int j=i+1; j<array.GetLength(1);j++)
                 {
                     int tmp = array[i, j];
                     array[i, j]=array[j,i];
                     array[j, i] = tmp;
                 }
             }
-            return tmp;
+            return array;
         }
         public static void Write(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int j = 0; i < array.GetLength(1); j++)
+                for (int j = 0; j < array.GetLength(1); j++)
                 { 
                     Console.Write($"{array[i,j]} ");
 
